@@ -78,6 +78,10 @@ app.use((req, res, next) => {
 // ----------------------
 app.use("/blogs", PostRouter);
 
+app.get("/", (req, res) => {
+    res.redirect("/blogs");
+});
+
 // ----------------------
 // SERVER START
 // ----------------------
