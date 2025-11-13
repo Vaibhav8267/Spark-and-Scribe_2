@@ -111,16 +111,18 @@
      cursor: pointer;
      transition: background-color 0.2s, transform 0.1s;
      margin-top: 10px;
-     
+
  }
 
  .login-button:hover {
      background-color: #cf5b78;
      transform: translateY(-1px);
  }
-.login-option p{
-    background-color: transparent;
-}
+
+ .login-option p {
+     background-color: transparent;
+ }
+
  .login-option a {
      color: #cf5b78;
      text-decoration: none;
@@ -207,9 +209,10 @@
      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
  }
 
-.c{
-    background-color: transparent;
-}
+ .c {
+     background-color: transparent;
+ }
+
  @media (max-width: 768px) {
      .login {
          flex-direction: column;

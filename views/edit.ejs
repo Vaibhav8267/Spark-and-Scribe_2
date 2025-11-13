@@ -1,0 +1,32 @@
+<% layout('/boilerCode/boilerCode') -%>
+
+<body>
+  <div class="row mt-4">
+    <div class="col-8 offset-2">
+
+      <h2>Edit Your Blog</h2>
+
+      <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" class="needs-validation">
+
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" name="blog[title]" value="<%= blog.title %>" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+          <textarea name="blog[description]" class="form-control" rows="4" required><%= blog.description %></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Content</label>
+          <textarea name="blog[content]" rows="6" class="form-control" required><%= blog.content %></textarea>
+        </div>
+
+        <button class="btn btn-primary mt-2">Update Blog</button>
+
+      </form>
+
+    </div>
+  </div>
+</body>

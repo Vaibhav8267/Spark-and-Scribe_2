@@ -1,4 +1,5 @@
-<% layout('/boilerCode/boiler') -%>
+    <% layout('/boilerCode/boilerCode') -%>
+
 <body>
   
   <div class="container">
@@ -10,7 +11,7 @@
         <div class="login">
             <div class="login-card">
                 <h3>Welcome Back!</h3>
-                <form action="/login" method="POST" class="input">
+                <form action="/blogs/login" method="POST" class="input">
                     
                     <div class="input">
                         <label for="username" class="input">Username</label>
@@ -35,7 +36,7 @@
             <div class="login-option">
                 <h4>Don't have an account?</h4>
                 <p style="color: #767676; margin-bottom: 15px;">Join Spark and Scribe now to save ideas and connect with creators.</p>
-                <a href="/signup" style="font-weight: 700;">Sign Up</a>
+                <a href="/blogs/signup" style="font-weight: 700;">Sign Up</a>
             </div>
      </div>
        
@@ -73,7 +74,7 @@
         </div>
         
         <div class="go-to-blog-section">
-            <form action="/gohome">
+            <form action="/blogs">
             <button >
                 Continue to Blog Home Page
             </button>

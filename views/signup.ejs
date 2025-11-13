@@ -1,5 +1,164 @@
-<% layout('/boilerCode/boiler') -%>
+    <% layout('/boilerCode/boilerCode') -%>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background-color: #ffe5ec;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    padding: auto !important;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.head {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.head h1 {
+    font-size: 3rem;
+    font-family: cursive;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.head p {
+    font-size: 1.1rem;
+    font-family: 'PAPYRUS', fantasy;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.login-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-option {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-card h3,
+.login-option h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #cf5b78;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.login-option p,
+.login-option h4 {
+    background-color: transparent;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.login-card label {
+    background-color: transparent;
+}
+
+.login-input {
+    padding: 12px 15px;
+    border: 1px solid #ffc2d1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #cf5b78;
+    box-shadow: 0 0 0 3px rgba(255, 194, 209, 0.5);
+}
+
+.login-button {
+    padding: 12px 20px;
+    background-color: #ffc2d1;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #cf5b78;
+    transform: translateY(-1px);
+}
+
+.login-option a{
+    color: #cf5b78;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 25px;
+    border: 2px solid #ffc2d1;
+    border-radius: 50px;
+    transition: background-color 0.2s;
+}
+
+.login-option a:hover {
+    background-color: #ffc2d1;
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .login {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-card,
+    .login-option {
+        max-width: 100%;
+    }
+}
+</style>
 <body>
 
     <div class="container">
@@ -12,7 +171,7 @@
 
             <div class="login-card">
                 <h3>Create Your Account</h3>
-                <form action="/signup" method="POST">
+                <form action="/blogs/signup" method="POST">
 
                     <div class="input">
                         <label for="username">Username</label>
@@ -41,7 +200,7 @@
                 <h4>Already a member?</h4>
                 <p style="color: #767676; margin-bottom: 15px;">Welcome back! Log in to pick up where you left off.</p>
 
-                <a href="/login" style="font-weight: 700;">Login</a>
+                <a href="/blogs/login" style="font-weight: 700;">Login</a>
             </div>
         </div>
 

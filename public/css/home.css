@@ -1,28 +1,23 @@
-.container {
+.box {
     margin-left: 71px;
     padding-top: 40px;
 }
 
 
-#head {
-
-
-    height: 100px;
-
+.Title {
+    height: 3rem;
     margin-top: 40px;
     margin-bottom: 40px;
-    margin-left: 250px;
-    margin-right: 250px;
-
 }
 
-#head h2 {
-
-    text-align: center;
-    font-family: cursive;
+.Title h2 {
+text-align: center;
+        font-family: cursive;
+        color: var(--color-primary-pink);
+        
 }
 
-#head p {
+.Title p {
 
     text-align: center;
     font-family: PAPYRUS;
@@ -89,7 +84,9 @@ body {
 .searchform {
     display: flex;
     align-items: center;
-    width: 600px;
+    width: 100%;
+max-width: 600px;
+
     height: 40px;
 
     background-color: #fff;
@@ -127,7 +124,7 @@ body {
     border-color: #000;
 }
 
-.card-container {
+.Post_cards {
 
     max-width: 1200px;
     margin: 0 auto;
@@ -185,3 +182,4 @@ body {
     font-weight: 500;
     text-decoration: none;
 }
+

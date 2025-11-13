@@ -1,4 +1,5 @@
-:root {
+
+        :root {
     --color-dark-pink: #E53974;
     --color-text-body: #4A4A4A;
     --color-text-header: #333333;
@@ -9,18 +10,31 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-lightest-pink);
-    padding: 20px 0;
-    margin: 0;
+    display: flex;
+    padding: 0;
+     /* margin-top: 30% !important; */
 }
 .guide-step{
     margin-top: 5px;
     margin-bottom: 10px;
+    
 }
 
+.container{
+   
+    width: 100%  !important ;
+    max-width: 1200px  !important;
+    margin: 0 auto !important ;
+    padding: 20px   !important;
+    box-sizing: border-box  ;
+}
 .centered-content {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 20px;
+    background-color: #333333 !important ;
+    width: 10px !important ;
+    max-width: 1200px !important ;
+    margin: 0 auto !important ;
+    padding: 20px !important ;
+    box-sizing: border-box !important ;
 }
 
 .auth-form-card {
@@ -36,14 +50,15 @@ body {
 .about-header {
     margin-bottom: 20px;
     padding: 0;
-    text-align: center;
+    font-family: cursive;
+    text-align: center  ;
 }
 
 .about-header h2 {
     font-size: 2rem;
     color: var(--color-text-header);
     margin: 0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif  ;
 }
 
 .about-header p {

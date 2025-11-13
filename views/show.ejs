@@ -1,0 +1,91 @@
+    <% layout('/boilerCode/boilerCode') -%>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+
+            <h1 class="text-center mb-4 display-4 fw-bold">
+                <%= blog.title %>
+            </h1>
+
+            <div class="card shadow-lg mb-5">
+                <img src="<%= blog.image.url %>" class="card-img-top">
+
+                <div class="card-body">
+
+                  
+
+                    <p class="lead"><%= blog.content %></p>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between align-items-center">
+
+                    <!-- EDIT + DELETE ONLY FOR OWNER -->
+                    <div>
+                        <% if (
+                            currUser &&
+                            blog.owner &&
+                            currUser._id.toString() === blog.owner._id.toString()
+                        ) { %>
+
+                            <a href="/blogs/<%= blog._id %>/edit" class="btn btn-primary me-2">Edit</a>
+
+                            <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" class="d-inline">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+
+                        <% } %>
+                    </div>
+
+                    <!-- LIKE BUTTON -->
+                    <form action="/blogs/<%= blog._id %>/like" method="POST">
+                        <button class="btn btn-outline-danger">
+                            ❤️ <%= blog.likes.length %> Likes
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <!-- COMMENTS SECTION -->
+            <div class="card shadow-sm mt-5 mb-5">
+
+                <div class="card-header bg-light">
+                    <h4>Add a Comment</h4>
+                </div>
+
+                <div class="card-body">
+                    <form action="/blogs/<%= blog._id %>/comments" method="POST">
+                        <textarea name="comment[content]" class="form-control" rows="4" required></textarea>
+                        <button class="btn btn-success mt-3">Submit</button>
+                    </form>
+                </div>
+
+                <div class="card-footer bg-white">
+                    <h5>Comments</h5>
+
+                    <% if (blog.comments.length > 0) { %>
+                        <ul class="list-group list-group-flush">
+
+                            <% blog.comments.forEach(c => { %>
+                                <li class="list-group-item">
+                                    <p><%= c.content %></p>
+
+                                    <small class="text-muted">
+                                        by <%= c.author ? c.author.username : "Anonymous" %>
+                                    </small>
+                                </li>
+                            <% }) %>
+
+                        </ul>
+
+                    <% } else { %>
+                        <p class="text-muted">No comments yet.</p>
+                    <% } %>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

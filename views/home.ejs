@@ -1,51 +1,35 @@
-<% layout('/boilerCode/boiler') -%>
-<body>
-    <div class="container">
-    <div id="head">
-        <h2>SPARK AND SCRIBE </h2>
-        <p>From sparks of thought to words that shine.</p>
-    </div>
-    
-     <div class="nav">
-      
-        <a href="/home" title="Home Feed" class="active">
-            <span class="icon-container"><i class="fa-solid fa-house"></i></span>
-        </a>
-        <a href="#" title="Full Blog List">
-            <span class="icon-container"><i class="fa-solid fa-list"></i></span>
-        </a>
-        <a href="/about" title="About Page">
-            <span class="icon-container"><i class="fa-solid fa-bookmark"></i></i></span>
-        </a>
-        <a href="/create" title="create blog">
-            <span class="icon-container"><i class="fa-solid fa-plus"></i></span>
-        </a>
-        <a href="/logout" title="Log out">
-            <span class="icon-container"><i class="fa-solid fa-right-from-bracket"></i></span>
-        </a>
-    </div>
+<% layout('/boilerCode/boilerCode') -%>
 
-    
-    <div class="searchbar">
-        <form action="/search" method="get" class="searchform">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" name="q" placeholder="Search" class="searchinput">
-        </form>
-    </div>
-    <div class="card-container">
-        <%for(post of allPost){%>
-            <a href="#" class="blog-card">
-                <img src="<%=post.image%>"  class="card-image">
-                <div class="card-content">
-                    <h3 class="card-title"><%=post.title%></h3>
-                    <p class="card-excerpt"><%=post.content%></p>
-                </div>
-            </a>
-        <%}%>
-       
-    </div>
-   
-</div>
+    <body>
+        <div class="box">
+            <div class="Title">
+                <h2>SPARK AND SCRIBE </h2>
+                <p>From sparks of thought to words that shine.</p>
+            </div>
 
-</body>
+            <div class="searchbar">
+                <form action="/search" method="get" class="searchform">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" name="q" placeholder="Search" class="searchinput">
+                </form>
+            </div>
+            <div class="Post_cards">
+                <% for (post of allPost) { %>
+                    <a href="/blogs/show/<%= post._id %>" class="blog-card">
+                        <img src="<%= post.image.url %>" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title">
+                                <%= post.title %>
+                            </h3>
+                            <p class="card-excerpt">
+                                <%= post.content %>
+                            </p>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
 
+
+        </div>
+
+    </body>

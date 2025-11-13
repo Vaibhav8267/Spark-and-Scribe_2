@@ -1,209 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-         body {
-            background-color: var(--color-extra-light-pink);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-           :root {
-            --color-primary-pink: #cf5b78; 
-            --color-light-pink: #ffc2d1;  
-            --color-extra-light-pink: #ffe5ec; 
-            --color-text-dark: #333;
-            --color-text-light: #767676;
-            --color-button-hover: #e0879c;
-        }
-        .container {
-            margin-left: 71px;
-            padding-top: 40px;
-            padding-right: 20px;
-            padding-bottom: 40px;
-        }
-         #head {
-            height: 100px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            margin-left: 250px;
-            margin-right: 250px;
-        }
+<% layout('/boilerCode/boilercode') -%>
 
-        #head h2 {
-            text-align: center;
-            font-family: cursive;
-            color: var(--color-primary-pink);
-        }
 
-        #head p {
-            text-align: center;
-            font-family: PAPYRUS;
-            color: var(--color-text-light);
-        }
-         .about-content {
-           
-            max-width: 800px;
-            margin: 0 auto; 
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
 
-        .about-content h1 {
-            text-align: center;
-            color: var(--color-primary-pink);
-            margin-bottom: 10px;
-        }
+    <body>
 
-        .create-form-container {
-            margin-top: 30px;
-        }
+        <div id="head">
+            <h2>SPARK AND SCRIBE </h2>
+            <p>From sparks of thought to words that shine.</p>
+        </div>
 
-        .new-blog-form {
-            display: flex;
-            flex-direction: column;
-            gap: 25px; 
-        }
+        <div class="container">
+            <div class="about-content">
+                <h1>Create a New Post ✨</h1>
+                <p style="text-align: center; font-style: italic; color: var(--color-primary-pink);">
+                    "Let the spark flow through the scribe."
+                </p>
 
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
+                <div class="create-form-container">
 
-        .input-group label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-text-dark);
-            margin-bottom: 8px;
-        }
+                    <form action="/blogs/create" method="POST" novalidate class="new-blog-form need-validation"enctype="multipart/form-data">
 
-        .input-group input,
-        .input-group textarea {
-            padding: 12px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            color: var(--color-text-dark);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            width: 100%;
-            box-sizing: border-box; }
+                        <div class="input-group">
+                            <label for="title">Blog Title</label>
+                            <input type="text" id="title" name="blog[title]" placeholder="Give your spark a title"
+                                required>
+                        </div>
 
-        .input-group input:focus,
-        .input-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary-pink);
-            box-shadow: 0 0 0 3px rgba(207, 91, 120, 0.2); 
-        }
+                        <div class="input-group">
+                            <label for="imageUrl">Image URL (Optional)</label>
+                            <input type="file" id="imageUrl" name="blog[image]"
+                                placeholder="Paste an image link (e.g., https://...)">
+                        </div>
 
-        .input-group textarea {
-            resize: vertical;
-            min-height: 200px;
-        }
+                        <!-- ⭐ CATEGORY DROPDOWN ADDED HERE -->
+                        <div class="input-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="blog[category]" required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Health & Wellness">Health & Wellness</option>
+                                <option value="Travel">Travel</option>
+                                <option value="Food & Cooking">Food & Cooking</option>
+                                <option value="Photography">Photography</option>
+                                <option value="DIY & Crafts">DIY & Crafts</option>
+                                <option value="Technology">Technology</option>
+                                <option value="Education & Learning">Education & Learning</option>
+                                <option value="Art & Creativity">Art & Creativity</option>
+                                <option value="Books & Writing">Books & Writing</option>
+                            </select>
+                        </div>
 
-       
-        .post-button {
-            align-self: flex-end;
-            padding: 12px 30px;
-            background-color: var(--color-primary-pink);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-            box-shadow: 0 4px 10px rgba(207, 91, 120, 0.4);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+                        <div class="input-group">
+                            <label for="content">Your Thoughts & Content</label>
+                            <textarea id="content" name="blog[content]" placeholder="Write your words here..."
+                                required></textarea>
+                        </div>
 
-        .post-button:hover {
-            background-color: var(--color-button-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(207, 91, 120, 0.6);
-        }
+                        <button type="submit" class="post-button">
+                            <i class="fa-solid fa-paper-plane"></i> Post Blog
+                        </button>
 
-        .post-button i {
-            color: white; }
+                    </form>
 
-        @media (max-width: 1000px) {
-            #head {
-                margin-left: 100px;
-                margin-right: 100px;
-            }
-            .about-content {
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin-left: 0;
-                padding-top: 20px;
-            }
-            .nav {
-                width: 60px;
-            }
-            #head {
-                margin-left: 80px;
-                margin-right: 20px;
-            }
-            .about-content {
-                padding: 20px 15px;
-                margin-top: 20px;
-                border-radius: 10px;
-            }
-
-            .searchform {
-                width: 80%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-         <div id="head">
-                <h2>SPARK AND SCRIBE </h2>
-                <p>From sparks of thought to words that shine.</p>
-            </div>
-       <div class="about-content">
-            <h1>Create a New Post ✨</h1>
-            <p style="text-align: center; font-style: italic; color: var(--color-primary-pink);">
-                "Let the spark flow through the scribe."
-            </p>
-
-            <div class="create-form-container">
-
-                <form action="#" method="POST" class="new-blog-form">
-
-                    <div class="input-group">
-                        <label for="title">Blog Title</label>
-                        <input type="text" id="title" name="blog[title]" placeholder="Give your spark a title" required>
-                    </div>
-
-                    <div class="input-group">
-                        <label for="imageUrl">Image URL (Optional)</label>
-                        <input type="url" id="imageUrl" name="blog[imageUrl]" placeholder="Paste an image link for your card (e.g., https://...)">
-                    </div>
-
-                    <div class="input-group">
-                        <label for="content">Your Thoughts & Content</label>
-                       
-                        <textarea id="content" name="blog[content]" rows="15" placeholder="Write your words here. Tell your story, share your DIY, or start a discussion..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="post-button">
-                        <i class="fa-solid fa-paper-plane"></i> Post Blog
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-</body>
-</html>
+
+    </body>
