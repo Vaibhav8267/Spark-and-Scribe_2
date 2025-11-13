@@ -7,6 +7,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const MongoStore=require("connect-mongo")
 
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -26,6 +27,13 @@ async function main() {
 main()
     .then(() => console.log("Connected to Database"))
     .catch(err => console.log(err));
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600,
+});
 // ----------------------
 // VIEW ENGINE + MIDDLEWARE
 // ----------------------
@@ -40,7 +48,7 @@ app.use(methodOverride("_method"));
 // SESSION + FLASH
 // ----------------------
 const sessionConfig = {
-    secret: "supersecret",
+    secret:process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
