@@ -15,9 +15,16 @@ const LocalStrategy = require("passport-local");
 
 const User = require("./model/user");
 const PostRouter = require("./routers/postRouter");
-const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.ATLASDB_URL;
 async function main() {
-    await mongoose.connect(dbUrl)
+    try {
+        await mongoose.connect(process.env.ATLASDB_URL, {
+            serverSelectionTimeoutMS: 8000
+        });
+        console.log("🟢 MongoDB Connected");
+    } catch (err) {
+        console.error("🔴 MongoDB Connection Error:", err);
+    }
 }
 // ----------------------
 // DB CONNECTION
