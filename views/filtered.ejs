@@ -1,4 +1,4 @@
-    <% layout('/boilerCode/boilerCode') -%>
+<% layout('/boilerCode/boilerCode') -%>
 
 <div class="container mt-5">
 
@@ -11,10 +11,12 @@
             <% posts.forEach(post => { %>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow">
-                        <img src="<%= post.image %>" class="card-img-top">
+                        <img src="<%= post.image.url %>" class="card-img-top">
                         <div class="card-body">
                             <h5><%= post.title %></h5>
-                            <p><%= post.description.substring(0, 80) %>...</p>
+
+                            <p><%= (post.description || "").substring(0, 80) %>...</p>
+
                             <a href="/blogs/show/<%= post._id %>" class="btn btn-primary btn-sm">Read More</a>
                         </div>
                     </div>

@@ -20,20 +20,24 @@ module.exports.createForm = (req, res) => {
   res.render("create.ejs");
 };
 
-// CREATE BLOG
 module.exports.createBlog = async (req, res) => {
-  let url=req.file.path;
-  let filename=req.file.filename
-  // console.log(url,"..." ,filename)
+  let url = "";
+  let filename = "";
 
-    const newPost = new Post(req.body.blog);
-    newPost.owner = req.user._id;
-    newPost.image={url,filename};
-   
-    await newPost.save();
-    req.flash("success", "New Blog Created!");
-    res.redirect("/blogs");
+  if (req.file) {
+    url = req.file.path;
+    filename = req.file.filename;
+  }
+
+  const newPost = new Post(req.body.blog);
+  newPost.owner = req.user._id;
+  newPost.image = { url, filename };
+
+  await newPost.save();
+  req.flash("success", "New Blog Created!");
+  res.redirect("/blogs");
 };
+  
 
 //FILTER ROUTE
 module.exports.filterByCategory = async (req, res) => {
